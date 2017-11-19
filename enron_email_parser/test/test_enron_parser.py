@@ -11,7 +11,7 @@ class TestEnronParser(TestCase):
 
         self.assertFalse(enron_parser.main([]))
 
-    @patch('enron_email_parser.user_parser.UserParser.parse_user')
+    @patch('enron_email_parser.enron_parser.UserParser')
     @patch('os.path.join')
     @patch('os.listdir')
     @patch('os.path.isdir')
@@ -19,7 +19,7 @@ class TestEnronParser(TestCase):
                       mock_os_path_isdir,
                       mock_os_listdir,
                       mock_os_path_join,
-                      mock_user_parser_ref):
+                      mock_user_parser):
         mock_os_path_isdir.return_value = True
         mock_os_listdir.return_value = ['dir-1', 'dir-2']
         joined_dirs = ['joined-dir-1', 'joined-dir-2']
@@ -28,4 +28,7 @@ class TestEnronParser(TestCase):
         main_result = enron_parser.main(["total-garbage", "some-maildir-path"])
 
         self.assertTrue(main_result)
-        mock_user_parser_ref.assert_has_calls([call('joined-dir-1'), call('joined-dir-2')])
+
+        expected_user_parser_calls = [call().parse_user('joined-dir-1'),
+                                      call().parse_user('joined-dir-2')]
+        mock_user_parser.assert_has_calls(expected_user_parser_calls, any_order=True)
