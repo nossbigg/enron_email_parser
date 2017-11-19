@@ -28,4 +28,5 @@ class TestSaveToDiskUtil(TestCase):
         mock_os_path_dirname.assert_called_with(some_full_path)
         mock_pathlib_path.assert_called_with("/dirname")
         mock_path.mkdir.assert_called_once()
+        mock_path.mkdir.assert_called_with(parents=True, exist_ok=True)
         mock_pickle_dump.assert_called_with(some_dict, callee.Any(), -1)
