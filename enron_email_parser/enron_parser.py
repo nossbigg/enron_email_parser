@@ -10,13 +10,13 @@ parser_output_dir = 'data'
 def main(args):
     print("Enron Email Parser by Gibson\n")
 
-    if not os.path.isdir(args[1]):
+    if len(args) < 2 or not os.path.isdir(args[1]):
         print("Enron mail directory not supplied!")
-        return
+        return False
 
     ENRON_MAIL_DIRECTORY = args[1]
-
     do_parse(ENRON_MAIL_DIRECTORY)
+    return True
 
 
 def do_parse(enron_mail_directory):
@@ -37,9 +37,14 @@ def do_parse(enron_mail_directory):
 
 
 def list_folders(directory):
-    return [os.path.join(directory, d)
-            for d in os.listdir(directory)
-            if os.path.isdir(os.path.join(directory, d))]
+    folders = []
+
+    for folder_path in os.listdir(directory):
+        folder_path_full = os.path.join(directory, folder_path)
+        if os.path.isdir(folder_path_full):
+            folders.append(folder_path_full)
+
+    return folders
 
 
 if __name__ == '__main__':
