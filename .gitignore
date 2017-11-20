@@ -2,7 +2,7 @@
 # Created by https://www.gitignore.io/api/python,intellij
 
 # Ignore parser output files
-/enron_email_parser/data/*
+data/
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
