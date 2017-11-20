@@ -2,7 +2,7 @@
 import os
 import sys
 
-from enron_email_parser.user_parser import UserParser
+from user_parser import UserParser
 
 parser_output_dir = 'data'
 

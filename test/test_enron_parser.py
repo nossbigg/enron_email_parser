@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch, call
 
-from enron_email_parser import enron_parser
+import enron_parser
 
 
 class TestEnronParser(TestCase):
@@ -11,7 +11,7 @@ class TestEnronParser(TestCase):
 
         self.assertFalse(enron_parser.main([]))
 
-    @patch('enron_email_parser.enron_parser.UserParser')
+    @patch('enron_parser.UserParser')
     @patch('os.path.join')
     @patch('os.listdir')
     @patch('os.path.isdir')

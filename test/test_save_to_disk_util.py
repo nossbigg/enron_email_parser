@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock
 
 import callee
 
-from enron_email_parser import save_to_disk_util
+import save_to_disk_util
 
 
 class TestSaveToDiskUtil(TestCase):

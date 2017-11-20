@@ -1,8 +1,8 @@
 import glob
 import os
 
-from enron_email_parser import save_to_disk_util
-from enron_email_parser.message_parser import MessageParser
+import save_to_disk_util
+from message_parser import MessageParser
 
 
 class UserParser:
