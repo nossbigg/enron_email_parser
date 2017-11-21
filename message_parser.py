@@ -22,7 +22,7 @@ class MessageParser:
         'x_folder': (re.compile("(?<=X-Folder: ).*?(?=\n)")),
         'x_origin': (re.compile("(?<=X-Origin: ).*?(?=\n)")),
         'x_filename': (re.compile("(?<=X-FileName: ).*?(?=\n)")),
-        'body': (re.compile("(?<=\.pst\n\n).*$", re.DOTALL))
+        'body': (re.compile("(?<=\.(pst|PST|nsf)\n\n).*$", re.DOTALL))
     }
 
     @staticmethod
